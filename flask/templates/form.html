@@ -1,50 +1,121 @@
-<div style="margin:auto !important; max-width:700px !important;">
+<!doctype html>
+<html lang="en">
+  <head>F
+    <title>HireAi - Application</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
 
+<link href="{{ url_for('static',filename='styles/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
-<form action="/data" method = "POST">
-    <p>First name <input type = "text" name = "FirstName" /></p>
-    <br>
-    <p>Last name <input type = "text" name = "LastName" /></p>
-    <br>
-    <p>Postcode <input type = "text" name = "Postcode" /></p>
-    <br>
-    <p>I am comfortable repeatedly lifting 12kgs <select name="Lift12kgs">
-                                                    <option value="true">True</option>
-                                                    <option value="false">False</option>
-                                                    </select>
-    <!--<input type="checkbox" name="lift12kgs" value="True"> -->
-    </p>
-    <br>
-    <p>Do you have a drivers license? <select name="License">
-                                                    <option value="true">True</option>
-                                                    <option value="false">False</option>
-                                                    </select>
-    <!--<input type="checkbox" name="license" value="True">-->
-    </p>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='styles/form-validation.css') }}" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+   
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://www.aec.gov.au/_template/css/img/aec-logo-homepage.png" alt="" width="249" height="55">
+      <h2>Electoral Role Application</h2>
+      <p class="lead">Complete this form if you are interested in working at elections. Your application will be assessed and, if successful, you will be matched to one of four specialised roles. <a class="lead" href="www.google.com">Click here </a> to find more information about the roles, responsibilities and renumeration.</p>
+    </div>
 
-    <p>Email address<input type = "text" name = "Email" /></p>
-    <br>
-<p>Please upload a video CV that responds to the following prompts:</p>
-<ul>
-    <li>
-        How are you doing?
-    </li>
-    <li>
-        Tell us about yourself.
-    </li>
-    <li>
-        Tell us about a time that you demonstrated leadership.
-    </li>
-    <li>
-        Tell us about a time when you were working on a team and you were faced with a challenge. How did you solve the problem?
-    </li>
-</ul>
-<br>
+    <div class="row justify-content-md-center">
+      <div class="col-md-7 col-lg-8">
+        <form action="/data" method = "POST" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="FirstName" class="form-label">First name</label>
+              <input type="text" class="form-control" name="FirstName" placeholder="Mike" value="" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
 
-    <p>YouTube link <input type = "text" name = "Youtube" /></p>
-    <p><input type = "submit" value = "Submit" /></p>
+            <div class="col-sm-6">
+              <label for="LastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" name="LastName" placeholder="Woods" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
 
-</form>
+            <div class="col-12">
+              <label for="Postcode" class="form-label">Postcode</label>
+              <input type="postcode" class="form-control" name="Postcode" placeholder="2065" required>
+              <div class="invalid-feedback">
+                Please enter a valid postcode.
+              </div>
+            </div>
 
+            <div class="col-12">
+              <label for="Email" class="form-label">Email Address</label>
+              <input type="text" class="form-control" name="Email" placeholder="mike@example.com" required>
+              <div class="invalid-feedback">
+                Please enter a valid email
+              </div>
+            </div>
 
+            <div class="col-12">
+              <label for="License" class="form-label">Do you have a drivers license?</label>
+              <select class="form-select" name="License" required>
+                <option value="">No</option>
+                <option>Yes</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid option.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="Lift12kgs" class="form-label">Are you comfortable repeatedly lifting up to 12kgs?</label>
+            <select class="form-select" name="Lift12kgs" required>
+              <option value="">No</option>
+              <option>Yes</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid option.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <br>
+            <label for="url" class="form-label">Video Interview URL</label><br>
+              <span class="text-muted">
+                Please upload a video CV that responds to the following prompts:
+                  <ul>
+                      <li>
+                          How are you doing?
+                      </li>
+                      <li>
+                          Tell us about yourself.
+                      </li>
+                      <li>
+                          Tell us about a time that you demonstrated leadership.
+                      </li>
+                      <li>
+                          Tell us about a time when you were working on a team and you were faced with a challenge. How did you solve the problem?
+                      </li>
+                  </ul>
+              </span>
+            </label>
+            <input type="text" class="form-control" name="Youtube" placeholder="https://youtu.be/dQw4w9WgXcQ">
+          </div>
+
+        </div>
+
+          <hr class="my-4">
+          <button class="w-50 btn btn-lg" style="background-color:#6e267b; color:#fff" type="submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2022 HireAi. This is a prototype developed for a University project</p>
+  </footer>
 </div>
+<script src="{{ url_for('static',filename='styles/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static',filename='styles/form-validation.js') }}"></script>
+  </body>
+</html>
